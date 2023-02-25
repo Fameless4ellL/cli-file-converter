@@ -13,9 +13,9 @@ import (
 var cfgFile string
 
 var rootCmd = &cobra.Command{
-	Use : "coverter",
-	Short : "a simple file converter",
-	Long : "a simple file converter that converts files from one format to another format CSV, JSON",
+	Use:   "coverter",
+	Short: "a simple file converter",
+	Long:  "a simple file converter that converts files from one format to another format CSV, JSON",
 }
 
 func main() {

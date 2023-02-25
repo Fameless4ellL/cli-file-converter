@@ -34,7 +34,6 @@ func convert(cmd *cobra.Command, args []string) {
 	outputFile := viper.GetString("output")
 	delimiter := viper.GetString("delimiter")
 
-
 	inputExt := getFileExtension(inputFile)
 	outputExt := getFileExtension(outputFile)
 
@@ -58,7 +57,7 @@ func getFileExtension(filename string) string {
 	return ext
 }
 
-func ConvertCSVToJSON(inputFileName, outputFileName string, delimiter string) error  {
+func ConvertCSVToJSON(inputFileName, outputFileName string, delimiter string) error {
 	// Validate the input file extension.
 	ext := getFileExtension(inputFileName)
 	if ext != "csv" {
