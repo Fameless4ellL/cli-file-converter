@@ -23,7 +23,7 @@ func main() {
 
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.converter.yaml)")
 
-	rootCmd.AddCommand(cmd.ConvertCmd)
+	rootCmd.AddCommand(converter.ConvertCmd)
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)

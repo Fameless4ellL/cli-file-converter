@@ -1,4 +1,4 @@
-package cmd
+package converter
 
 import (
 	"encoding/csv"
@@ -39,7 +39,7 @@ func convert(cmd *cobra.Command, args []string) {
 	outputExt := getFileExtension(outputFile)
 
 	if inputExt == "csv" && outputExt == "json" {
-		convertCSVToJSON(inputFile, outputFile, delimiter)
+		ConvertCSVToJSON(inputFile, outputFile, delimiter)
 	} else if inputExt == "json" && outputExt == "csv" {
 		fmt.Printf("unsupported file conversion: %s to %s", inputExt, outputExt)
 	} else {
@@ -58,7 +58,7 @@ func getFileExtension(filename string) string {
 	return ext
 }
 
-func convertCSVToJSON(inputFileName, outputFileName string, delimiter string) error  {
+func ConvertCSVToJSON(inputFileName, outputFileName string, delimiter string) error  {
 	// Validate the input file extension.
 	ext := getFileExtension(inputFileName)
 	if ext != "csv" {
