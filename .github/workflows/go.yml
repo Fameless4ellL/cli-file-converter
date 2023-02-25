@@ -26,4 +26,5 @@ jobs:
           uses: actions/setup-go@v3
           with:
             go-version: ${{ matrix.go }}
-        - run: go test
+        - run: go mod tidy -v
+        - run: go test -v
