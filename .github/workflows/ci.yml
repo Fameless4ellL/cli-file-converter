@@ -31,5 +31,3 @@ jobs:
           run: |
             cd tests
             go test -v
-        - name: Upload coverage reports to Codecov
-          uses: codecov/codecov-action@v3
