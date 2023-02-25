@@ -27,4 +27,6 @@ jobs:
           with:
             go-version: ${{ matrix.go }}
         - run: go mod tidy -v
-        - run: cd tests | go test -v
+        - run: |
+        cd tests 
+        go test -v
