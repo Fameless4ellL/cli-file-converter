@@ -1,7 +1,7 @@
 # This workflow will build a golang project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
 
-name: Go
+name: CI
 
 on:
   push:
@@ -12,22 +12,18 @@ on:
     - master
 
 jobs:
-
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-
-    - name: Set up Go
-      uses: actions/setup-go@v3
-      with:
-        go-version: 1.20
-
-    - name: Install dependencies and generate go.sum
-      run: go install github.com/Fameless4ellL/cli-file-converter
-
-    - name: Build
-      run: go build -v ./...
-
-    - name: Test
-      run: go test -v ./...
+  test:
+      runs-on: ${{ matrix.os }}
+      strategy:
+        fail-fast: false
+        matrix:
+          go: [ '1.20', '1.19', '1.18', '1.17', '1.16' ]
+          os: [ ubuntu-latest, macOS-latest, windows-latest ]
+      name: ${{ matrix.os }} Go ${{ matrix.go }} Tests
+      steps:
+        - uses: actions/checkout@v3
+        - name: Setup go
+          uses: actions/setup-go@v3
+          with:
+            go-version: ${{ matrix.go }}
+        - run: go test
