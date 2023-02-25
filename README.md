@@ -1,4 +1,6 @@
 # CLI File Converter
+![ci](https://github.com/Fameless4ellL/cli-file-converter/actions/workflows/ci.yaml/badge.svg)
+[![Go Report Card](https://goreportcard.com/badge/github.com/Fameless4ellL/cli-file-converter)](https://goreportcard.com/report/github.com/Fameless4ellL/cli-file-converter)
 
 This is a command-line interface (CLI) tool for converting files between CSV and JSON formats. The tool is written in Go and uses the `cobra` and `viper` packages for command-line parsing and configuration management.
 
