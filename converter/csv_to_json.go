@@ -91,7 +91,6 @@ func ConvertCSVToJSON(inputFileName, outputFileName string, delimiter string) er
 		}
 		jsonData = append(jsonData, jsonRecord)
 	}
-	fmt.Println(jsonData)
 
 	// Write the JSON data to the output file.
 	jsonBytes, err := json.MarshalIndent(jsonData, "", "  ")
