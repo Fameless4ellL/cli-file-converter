@@ -24,7 +24,7 @@ jobs:
         go-version: 1.20
 
     - name: Install dependencies and generate go.sum
-      run: go mod init
+      run: go init
 
     - name: Build
       run: go build -v ./...
