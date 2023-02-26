@@ -13,7 +13,7 @@ import (
 var cfgFile string
 
 var rootCmd = &cobra.Command{
-	Use:   "coverter",
+	Use:   "converter",
 	Short: "a simple file converter",
 	Long:  "a simple file converter that converts files from one format to another format CSV, JSON",
 }
