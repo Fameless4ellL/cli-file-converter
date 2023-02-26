@@ -13,12 +13,12 @@ func ConvertJSONToCSV(inputFile, outputFile, delimiter string) error {
 	// Validate the input file extension.
 	ext := utils.GetFileExtension(inputFile)
 	if ext != "json" {
-		fmt.Errorf("input file must be a JSON file")
+		return fmt.Errorf("input file must be a JSON file")
 	}
 	// Open the input file.
 	input, err := os.Open(inputFile)
 	if err != nil {
-		fmt.Errorf("error opening input file: %v", err)
+		return fmt.Errorf("error opening input file: %v", err)
 	}
 	defer input.Close()
 
@@ -26,7 +26,7 @@ func ConvertJSONToCSV(inputFile, outputFile, delimiter string) error {
 	jsonData := make([]map[string]string, 0)
 	err = json.NewDecoder(input).Decode(&jsonData)
 	if err != nil {
-		fmt.Errorf("error reading input file: %v", err)
+		return fmt.Errorf("error reading input file: %v", err)
 	}
 
 	// Convert the JSON records to CSV.
@@ -50,14 +50,14 @@ func ConvertJSONToCSV(inputFile, outputFile, delimiter string) error {
 	// Write the CSV data to the output file.
 	output, err := os.Create(outputFile)
 	if err != nil {
-		fmt.Errorf("error creating output file: %v", err)
+		return fmt.Errorf("error creating output file: %v", err)
 	}
 	defer output.Close()
 	writer := csv.NewWriter(output)
 	writer.Comma = rune(delimiter[0])
 	err = writer.WriteAll(csvData)
 	if err != nil {
-		fmt.Errorf("error writing output file: %v", err)
+		return fmt.Errorf("error writing output file: %v", err)
 	}
 
 	fmt.Println("JSON to CSV conversion successful.")
